@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # reverse_lazy function is used to generate URL based on the name of the view function or URL Pattern
 # It return a lazy object, which means that URL will not be resolved untill it is actually needed
@@ -35,3 +35,12 @@ class TaskCreate(CreateView):
     # fields = ['title', 'description']
     success_url =  reverse_lazy("task")
     
+class TaskUpdate (UpdateView):
+    model = Task
+    fields = '__all__'
+    success_url = reverse_lazy('task')
+
+class TaskDelete(DeleteView):
+    model = Task
+    context_object_name ='task'
+    success_url = reverse_lazy('task')
