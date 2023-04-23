@@ -1,8 +1,18 @@
-<h1>Login</h1>
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Login">
-</form>
+{% extends 'todolist/main.html' %}
+{% load static %}
+{% block content %}
+    <div class="header-bar">
+        <h1>Sign in</h1>
+    </div>
+    <div class="card-body">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Sign in" class="button">
+            <small><p>Don't have an account yet? <a href="{% url 'register' %}">Sign up Now</a></p></small>
+        </form>
+    
+        
+    </div>
+{% endblock content %}
 
-<p>Don't have an account yet? <a href="{% url 'register' %}">Register</a></p>
